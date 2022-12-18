@@ -18,20 +18,19 @@ public class CarrosController {
     private CarroService service;
 
     @GetMapping()
-    public ResponseEntity<List<CarroDTO>> get(){
+    public ResponseEntity<List<CarroDTO>> get() {
         return ResponseEntity.ok(service.getCarros());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getCarroById(@PathVariable("id") Long id){
-        Optional<CarroDTO> carro = service.getCarroById(id);
+    public ResponseEntity getCarroById(@PathVariable("id") Long id) {
+        CarroDTO carro = service.getCarroById(id);
 
-        return carro.map(ResponseEntity::ok).
-                orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.ok(carro);
     }
 
     @GetMapping("tipo/{tipo}")
-    public  ResponseEntity<List<CarroDTO>> getCarroByTipo(@PathVariable("tipo") String tipo){
+    public ResponseEntity<List<CarroDTO>> getCarroByTipo(@PathVariable("tipo") String tipo) {
         List<CarroDTO> carros = service.getCarrosByTipo(tipo);
 
         return carros.isEmpty() ? ResponseEntity.noContent().build() :
@@ -39,23 +38,14 @@ public class CarrosController {
     }
 
     @PostMapping
-    public ResponseEntity post(@RequestBody Carro carro){
-        try {
-            CarroDTO c = service.insert(carro);
-            URI location = getURI(c.getId());
-            return ResponseEntity.created(location).build();
-        } catch (Exception ex){
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    private URI getURI(Long id) {
-        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(id).toUri();
+    public ResponseEntity post(@RequestBody Carro carro) {
+        CarroDTO c = service.insert(carro);
+        URI location = getURI(c.getId());
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity put(@PathVariable("id") Long id, @RequestBody Carro carro){
+    public ResponseEntity put(@PathVariable("id") Long id, @RequestBody Carro carro) {
         carro.setId(id);
         CarroDTO c = service.update(carro, id);
 
@@ -64,11 +54,14 @@ public class CarrosController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
+    public ResponseEntity delete(@PathVariable("id") Long id) {
+        service.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
-
-        return service.delete(id) ? ResponseEntity.ok().build()
-                : ResponseEntity.notFound().build();
+    private URI getURI(Long id) {
+        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(id).toUri();
     }
 
 }
