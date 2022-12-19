@@ -43,6 +43,8 @@ class CarroServiceTest {
 	@Test
 	void test3() {
 		CarroDTO carro = service.getCarroById(11L);
+
+		assertNotNull(carro);
 		assertEquals(carro.getNome(), "Ferrari FF");
 	}
 
