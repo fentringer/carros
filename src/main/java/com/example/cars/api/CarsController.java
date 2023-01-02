@@ -1,8 +1,8 @@
-package com.example.carros.api;
+package com.example.cars.api;
 
-import com.example.carros.domain.Car;
-import com.example.carros.domain.CarDTO.CarDTO;
-import com.example.carros.domain.CarService;
+import com.example.cars.domain.Car;
+import com.example.cars.domain.CarDTO.CarDTO;
+import com.example.cars.domain.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

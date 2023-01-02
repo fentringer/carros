@@ -1,4 +1,4 @@
-package com.example.carros.domain;
+package com.example.cars.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;

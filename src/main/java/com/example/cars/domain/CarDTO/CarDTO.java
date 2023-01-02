@@ -1,6 +1,6 @@
-package com.example.carros.domain.CarDTO;
+package com.example.cars.domain.CarDTO;
 
-import com.example.carros.domain.Car;
+import com.example.cars.domain.Car;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 

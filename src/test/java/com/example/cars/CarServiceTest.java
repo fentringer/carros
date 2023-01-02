@@ -1,8 +1,8 @@
-package com.example.carros;
+package com.example.cars;
 
-import com.example.carros.domain.Car;
-import com.example.carros.domain.CarDTO.CarDTO;
-import com.example.carros.domain.CarService;
+import com.example.cars.domain.Car;
+import com.example.cars.domain.CarDTO.CarDTO;
+import com.example.cars.domain.CarService;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
