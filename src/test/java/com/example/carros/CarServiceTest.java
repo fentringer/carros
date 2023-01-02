@@ -1,8 +1,8 @@
 package com.example.carros;
 
-import com.example.carros.domain.Carro;
-import com.example.carros.domain.CarroDTO.CarroDTO;
-import com.example.carros.domain.CarroService;
+import com.example.carros.domain.Car;
+import com.example.carros.domain.CarDTO.CarDTO;
+import com.example.carros.domain.CarService;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +13,18 @@ import java.util.List;
 
 
 @SpringBootTest
-class CarroServiceTest {
+class CarServiceTest {
 
 	@Autowired
-	private CarroService service;
+	private CarService service;
 
 	@Test
 	void test1() {
-		Carro carro = new Carro();
-		carro.setNome("Ferrari");
-		carro.setTipo("esportivos");
+		Car car = new Car();
+		car.setName("Ferrari");
+		car.setType("esportivos");
 
-		CarroDTO c = service.insert(carro);
+		CarDTO c = service.insert(car);
 		assertNotNull(c);
 
 		Long id = c.getId();
@@ -35,22 +35,22 @@ class CarroServiceTest {
 
 	@Test
 	void test2() {
-		List<CarroDTO> carros = service.getCarros();
+		List<CarDTO> carros = service.getCarros();
 
 		assertEquals(30, carros.size());
 	}
 
 	@Test
 	void test3() {
-		CarroDTO carro = service.getCarroById(11L);
+		CarDTO carro = service.getCarroById(11L);
 
 		assertNotNull(carro);
-		assertEquals(carro.getNome(), "Ferrari FF");
+		assertEquals(carro.getName(), "Ferrari FF");
 	}
 
 	@Test
 	void test4() {
-		List<CarroDTO> carro = service.getCarrosByTipo("esportivos");
+		List<CarDTO> carro = service.getCarrosByTipo("esportivos");
 
 		assertEquals(10 , carro.size());
 	}

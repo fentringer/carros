@@ -3,6 +3,6 @@ package com.example.carros.domain;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
-public interface CarroRepository extends JpaRepository<Carro, Long> {
-    List<Carro> findByTipo(String tipo);
+public interface CarRepository extends JpaRepository<Car, Long> {
+    List<Car> findByType(String tipo);
 }

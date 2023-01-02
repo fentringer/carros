@@ -8,16 +8,16 @@ import lombok.*;
 
 @Entity
 @Data
-public class Carro {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-    private String tipo;
-    private String descricao;
-    private String urlFoto;
+    private String name;
+    private String type;
+    private String description;
+    private String urlPhoto;
     private String urlVideo;
     private String latitude;
     private String longitude;
