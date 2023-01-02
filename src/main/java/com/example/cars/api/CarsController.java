@@ -11,29 +11,29 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/carros")
+@RequestMapping("/api/v1/cars")
 public class CarsController {
     @Autowired
     private CarService service;
 
     @GetMapping()
     public ResponseEntity<List<CarDTO>> get() {
-        return ResponseEntity.ok(service.getCarros());
+        return ResponseEntity.ok(service.getCars());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getCarroById(@PathVariable("id") Long id) {
-        CarDTO carro = service.getCarroById(id);
+    public ResponseEntity getCarById(@PathVariable("id") Long id) {
+        CarDTO car = service.getCarById(id);
 
-        return ResponseEntity.ok(carro);
+        return ResponseEntity.ok(car);
     }
 
-    @GetMapping("tipo/{tipo}")
-    public ResponseEntity<List<CarDTO>> getCarroByTipo(@PathVariable("tipo") String tipo) {
-        List<CarDTO> carros = service.getCarrosByTipo(tipo);
+    @GetMapping("type/{type}")
+    public ResponseEntity<List<CarDTO>> getCarsByType(@PathVariable("type") String type) {
+        List<CarDTO> cars = service.getCarsByType(type);
 
-        return carros.isEmpty() ? ResponseEntity.noContent().build() :
-                ResponseEntity.ok(carros);
+        return cars.isEmpty() ? ResponseEntity.noContent().build() :
+                ResponseEntity.ok(cars);
     }
 
     @PostMapping

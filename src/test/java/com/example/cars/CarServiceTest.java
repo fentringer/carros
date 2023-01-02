@@ -35,14 +35,14 @@ class CarServiceTest {
 
 	@Test
 	void test2() {
-		List<CarDTO> carros = service.getCarros();
+		List<CarDTO> carros = service.getCars();
 
 		assertEquals(30, carros.size());
 	}
 
 	@Test
 	void test3() {
-		CarDTO carro = service.getCarroById(11L);
+		CarDTO carro = service.getCarById(11L);
 
 		assertNotNull(carro);
 		assertEquals(carro.getName(), "Ferrari FF");
@@ -50,7 +50,7 @@ class CarServiceTest {
 
 	@Test
 	void test4() {
-		List<CarDTO> carro = service.getCarrosByTipo("esportivos");
+		List<CarDTO> carro = service.getCarsByType("esportivos");
 
 		assertEquals(10 , carro.size());
 	}

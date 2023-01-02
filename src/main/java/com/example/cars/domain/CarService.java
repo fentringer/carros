@@ -16,29 +16,29 @@ public class CarService {
     @Autowired
     private CarRepository rep;
 
-    public List<CarDTO> getCarros(){
+    public List<CarDTO> getCars(){
         return rep.findAll().stream().
                 map(CarDTO::create).
                 collect(Collectors.toList());
     }
 
-    public CarDTO getCarroById(Long id){
-        return rep.findById(id).map(CarDTO::create).orElseThrow(()->new ObjectNotFoundException("Carro nao encontrado"));
+    public CarDTO getCarById(Long id){
+        return rep.findById(id).map(CarDTO::create).orElseThrow(()->new ObjectNotFoundException("Car not found"));
     }
 
-    public List<CarDTO> getCarrosByTipo(String tipo){
-        return rep.findByType(tipo).stream().
+    public List<CarDTO> getCarsByType(String type){
+        return rep.findByType(type).stream().
                 map(CarDTO::create).collect(Collectors.toList());
     }
 
     public CarDTO insert(Car car) {
-        Assert.isNull(car.getId(), "Nao foi possivel inserir o registro.");
+        Assert.isNull(car.getId(), "Unable to insert a new car.");
 
         return CarDTO.create(rep.save(car));
     }
 
     public CarDTO update(Car car, Long id) {
-        Assert.notNull(id,"Nao foi possivel atualizar o registro.");
+        Assert.notNull(id,"Unable to update.");
 
         Optional<Car> optional = rep.findById(id);
         if (optional.isPresent()){

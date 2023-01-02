@@ -33,7 +33,7 @@ public class ExceptionConfig extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers,
                                                                          HttpStatusCode status, WebRequest request) {
-        return new ResponseEntity<>(new ExeptionError("Operacao nao permitida."), HttpStatus.METHOD_NOT_ALLOWED);
+        return new ResponseEntity<>(new ExeptionError("Method not allowed."), HttpStatus.METHOD_NOT_ALLOWED);
     }
 }
 class ExeptionError implements Serializable{
